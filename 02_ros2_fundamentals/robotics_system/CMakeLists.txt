@@ -11,16 +11,27 @@ find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 
 add_executable(robot_state_node
-              src/robot_state_node.cpp
-  )
+  src/robot_state_node.cpp
+)
+
+add_executable(position_monitor_node
+  src/position_monitor_node.cpp
+)
 
 ament_target_dependencies(robot_state_node
   rclcpp
   std_msgs
 )
 
+ament_target_dependencies(position_monitor_node
+  rclcpp
+  std_msgs
+)
+
+
 install(TARGETS
   robot_state_node
+  position_monitor_node
   DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)
